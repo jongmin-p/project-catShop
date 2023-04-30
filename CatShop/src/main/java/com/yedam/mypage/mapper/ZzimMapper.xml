@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.mypage.mapper.ZzimMapper">
+  <select id="zzimList" resultType="ZzimVO">
+    select z.pro_id,z.mem_Id, pro_img, pro_name, pro_price, z.zzim_id
+	from product p join zzim z
+	on p.pro_id = z.pro_id
+	join member m 
+	on m.mem_id = z.mem_id
+	where m.mem_id = #{memId}
+  </select>
+  
+  <delete id="deleteZzim" >
+  	DELETE FROM zzim WHERE zzim_id = #{zzimId}
+  </delete>
+  
+  
+</mapper>

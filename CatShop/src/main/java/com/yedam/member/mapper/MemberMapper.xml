@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.yedam.member.mapper.MemberMapper">
+	<select id="login" resultType="MemberVO">
+		SELECT *
+		FROM member
+		WHERE mem_id = #{memId}
+		AND mem_pw = #{memPw}
+	</select>
+
+	<insert id="addMember" parameterType="MemberVO">
+		INSERT INTO member(mem_id, mem_pw, mem_name, mem_phone, mem_email, mem_user)
+		VALUES(#{memId}, #{memPw}, #{memName}, #{memPhone}, #{memEmail},
+		#{memUser})
+	</insert>
+
+
+	<select id="couponSelect" resultType="MemberVO">
+		SELECT *
+		FROM coupon c, member m
+		WHERE m.mem_id = c.mem_id
+		AND c.mem_id = #{memId}
+	</select>
+
+	<!-- 쿠폰 없는 회원정보 ver. -->
+	<select id="memberList" resultType="MemberVO">
+		SELECT * FROM member ORDER BY
+		mem_id
+	</select>
+	
+	<!-- memberList.do 에 쿠폰까지 출력한 ver.     -> 원하면 회원관리 페이지에도 추가로 출력 가능 -->
+<!-- 	<select id="memberList" resultType="MemberVO">
+		SELECT m.mem_id, m.mem_pw, m.mem_name, m.mem_phone, m.mem_email, m.mem_user, c.coup_id, c.coup_price
+		FROM member m LEFT JOIN coupon c ON m.mem_id = c.mem_id
+	</select> -->
+
+	<select id="selectMemberListPage" resultType="MemberVO">
+	  <![CDATA[
+	    SELECT *
+	    FROM (
+	      SELECT ROWNUM rnum, p.*
+	      FROM (
+	        SELECT *
+	        FROM member
+	        ORDER BY mem_id
+	      ) p
+	      WHERE ROWNUM <= #{endNum}
+	    )
+	    WHERE rnum >= #{startNum}
+	  ]]>
+	</select>
+	
+
+	<delete id="deleteMember" parameterType="String">
+		DELETE FROM member
+		WHERE mem_id = #{memId}
+	</delete>
+
+	<update id="updateMember" parameterType="MemberVO">
+		UPDATE member
+		<set>
+		mem_id = #{memId},
+		<if test="memPw != null">
+		mem_pw = #{memPw},
+		</if>
+		<if test="memName != null">
+		mem_name = #{memName},
+		</if>
+		<if test="memPhone != null">
+		mem_phone = #{memPhone},
+		</if>
+		<if test="memEmail != null">
+		mem_email = #{memEmail},
+		</if>
+		<if test="memUser != null">
+		mem_user = #{memUser}
+		</if>
+		</set>
+		WHERE mem_id=#{memId}
+	</update>
+
+	<!-- -->
+	<select id="getFindId" parameterType="String"
+		resultType="MemberVO">
+		SELECT mem_id
+		FROM member
+		WHERE mem_name = #{memName} AND
+		mem_email = #{memEmail}
+	</select>
+
+	<select id="getFindPwd" parameterType="String"
+		resultType="MemberVO">
+		SELECT mem_pw
+		FROM member
+		WHERE mem_id = #{memId} AND
+		mem_email = #{memEmail}
+	</select>
+
+	<!-- -->
+	<update id="setTempPwd" parameterType="MemberVO">
+		UPDATE member
+		SET
+		mem_pw = #{memPw}
+		WHERE mem_id=#{memId}
+	</update>
+
+	<!-- -->
+	<select id="checkId" parameterType="String" resultType="Integer">
+		SELECT COUNT(*)
+		FROM member
+		WHERE mem_id = #{memId}
+	</select>
+	
+	<select id="memInfo" resultType="MemberVO">
+		SELECT * FROM member
+		WHERE mem_id = #{memId}
+	</select>
+	
+	<!--  -->
+	<select id="searchSpecificMember" resultType="MemberVO">
+		SELECT * FROM member
+		WHERE mem_id = #{memId}
+	</select>
+	
+	<!--  -->
+	<insert id="insertCoupon" parameterType="MemberVO">
+	  <selectKey keyProperty="coupId" resultType="int" order="BEFORE">
+	    SELECT seq_coup_id.NEXTVAL FROM dual
+	  </selectKey>
+	  INSERT INTO coupon (coup_id, mem_id, coup_name, coup_price, coup_info, coup_expired, pay_id)
+	  VALUES (#{coupId}, #{memId}, #{coupName}, #{coupPrice}, #{coupInfo}, ADD_MONTHS(SYSDATE, 1), #{payId})
+  	</insert>
+</mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.notice.mapper.NoticeMapper">
+
+  <select id="noticeList" resultType="NoticeVO">
+    SELECT * FROM notice ORDER BY not_id desc
+  </select>
+  
+  <select id="selectNotice" resultType="NoticeVO">
+    SELECT * FROM notice where not_id = #{notId}
+  </select>
+  
+  <insert id="insertNotice" parameterType="NoticeVO">
+  	INSERT INTO notice (not_id, not_title, not_content, not_date)
+  	VALUES (seq_not_id.nextval,#{notTitle},#{notContent},sysdate)
+  </insert>
+  
+  <delete id="deleteNotice">
+    DELETE FROM notice WHERE not_id = #{notId}
+  </delete>	
+  
+  <update id="updateNotice" parameterType="NoticeVO">
+  	UPDATE notice 
+	SET not_title = #{notTitle}, not_content = #{notContent}, not_date = sysdate
+	WHERE not_id = #{notId}
+  </update>
+  
+</mapper>

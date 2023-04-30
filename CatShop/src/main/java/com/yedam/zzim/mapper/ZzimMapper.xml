@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.zzim.mapper.ZzimMapper">
+
+	<insert id="insertProductZzim" parameterType="ZzimVO1">
+		INSERT INTO
+		zzim
+		(zzim_id, mem_id, pro_id)
+		VALUES(1, #{memId}, #{proId})
+	</insert>
+
+	<select id="ZzimList" resultType="ZzimVO1">
+		SELECT *
+		FROM zzim
+		WHERE mem_id =
+		#{arg0} AND pro_id = #{arg1}
+	</select>
+
+	<delete id="deleteProductZzim">
+		DELETE
+		FROM zzim 
+		WHERE mem_id = #{arg0} AND pro_id = #{arg1}
+	</delete>
+</mapper>

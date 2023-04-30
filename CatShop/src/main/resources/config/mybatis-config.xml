@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<properties resource="config/config.properties">
+	</properties>
+	<settings>
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+		<setting name="jdbcTypeForNull" value="NULL" />
+	</settings>
+	<typeAliases>
+		<typeAlias alias="NoticeVO" type="com.yedam.notice.vo.NoticeVO"/>
+    	<typeAlias alias="MemberVO" type="com.yedam.member.vo.MemberVO"/> 
+		<typeAlias alias="OrderVO" type="com.yedam.order.vo.OrderVO"/>
+		<typeAlias alias="ProductVO" type="com.yedam.product.vo.ProductVO"/>
+		<typeAlias alias="ZzimVO" type="com.yedam.mypage.vo.ZzimVO"/>
+		<typeAlias alias="QaVO" type="com.yedam.qa.vo.QaVO"/>
+		<typeAlias alias="ZzimVO1" type="com.yedam.zzim.vo.ZzimVO"/>
+		<typeAlias alias="MyNoticeVO" type="com.yedam.mypage.vo.MyNoticeVO"/>
+
+	</typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver" value="${driver}" />
+				<property name="url" value="${url}" />
+				<property name="username" value="${username}" />
+				<property name="password" value="${password}" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper class="com.yedam.notice.mapper.NoticeMapper" />
+    	<mapper class="com.yedam.member.mapper.MemberMapper" />
+		<mapper class="com.yedam.order.mapper.OrderMapper" />
+		<mapper class="com.yedam.product.mapper.ProductMapper" />
+		<mapper class="com.yedam.mypage.mapper.ZzimMapper" />
+		<mapper class="com.yedam.qa.mapper.QaMapper" />
+		<mapper class="com.yedam.zzim.mapper.ZzimMapper" />
+	    <mapper class="com.yedam.mypage.mapper.MyNoticeMapper" />
+	</mappers>
+</configuration>

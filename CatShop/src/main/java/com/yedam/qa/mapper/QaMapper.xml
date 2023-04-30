@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.qa.mapper.QaMapper">
+	<select id="getList" resultType="QaVO">
+		SELECT * FROM qa
+		WHERE
+		pro_id=#{proId}
+		ORDER BY qa_id
+	</select>
+
+	<insert id="insertProductQa" parameterType="QaVO">
+		INSERT INTO QA
+		(qa_id, mem_id, pro_id, qa_title, qa_content, qa_date)
+		VALUES
+		(qa_seq.NEXTVAL, #{memId}, #{proId}, #{qaTitle}, #{qaContent},
+		sysdate)
+	</insert>
+
+	<!-- -->
+	<select id="getListAll" resultType="QaVO">
+		SELECT * FROM qa
+		ORDER BY qa_date DESC
+	</select>
+	
+	<select id="selectQaListAllPage" resultType="QaVO">
+	  <![CDATA[
+	    SELECT *
+	    FROM (
+	      SELECT ROWNUM rnum, p.*
+	      FROM (
+	        SELECT *
+	        FROM qa
+	        ORDER BY qa_id desc
+	      ) p
+	      WHERE ROWNUM <= #{endNum}
+	    )
+	    WHERE rnum >= #{startNum}
+	  ]]>
+	</select>
+
+	<!-- 특정 상품 QA 만 검색 -->
+	<select id="searchSpecificQa" resultType="QaVO">
+		SELECT * FROM qa
+		WHERE pro_id = #{proId}
+		ORDER BY qa_date DESC
+	</select>
+	
+	<delete id="deleteQa" parameterType="int">
+		DELETE FROM qa
+		WHERE qa_id =
+		#{qaId}
+	</delete>
+
+
+	<update id="updateQa" parameterType="QaVO">
+		UPDATE qa
+		<set>
+			<if test="qaReply != null">
+				qa_reply = #{qaReply},
+			</if>
+		</set>
+		WHERE qa_id = #{qaId}
+	</update>
+
+
+	<!-- <update id="updateQa" parameterType="QaVO"> -->
+	<!-- UPDATE qa -->
+	<!-- SET -->
+	<!-- qa_id = #{qaId}, -->
+	<!-- mem_id = #{memId}, -->
+	<!-- pro_id = #{proId}, -->
+	<!-- qa_title = #{qaTitle}, -->
+	<!-- qa_content = #{qaContent}, -->
+	<!-- qa_date = #{qaDate}, -->
+	<!-- qa_reply = #{qaReply} -->
+	<!-- WHERE qa_id=#{qaId} -->
+	<!-- </update> -->
+
+
+
+</mapper>

@@ -1,0 +1,82 @@
+div.productDetailQnA {
+	/* 	padding-top: 200px; */
+	margin-top: 200px;
+}
+
+body.productDetailQnA {
+	padding: 1.5em;
+	background: #f5f5f5
+}
+
+table.productDetailQnA {
+	border: 1px #a39485 solid;
+	font-size: .9em;
+	box-shadow: 0 2px 5px rgba(0, 0, 0, .25);
+	width: 100%;
+	border-collapse: collapse;
+	border-radius: 5px;
+	overflow: hidden;
+}
+
+th.productDetailQnA {
+	text-align: left;
+}
+
+thead.productDetailQnA {
+	font-weight: bold;
+	color: #fff;
+	background: #73685d;
+}
+
+td.productDetailQnA, th.productDetailQnA {
+	padding: 1em .5em;
+	vertical-align: middle;
+}
+
+td.productDetailQnA {
+	border-bottom: 1px solid rgba(0, 0, 0, .1);
+	background: #fff;
+}
+
+a.productDetailQnA {
+	color: #73685d;
+}
+button.btn {
+	float:right;
+}
+
+@media all and (max-width: 768px) {
+	table.productDetailQnA, thead.productDetailQnA, tbody.productDetailQnA,
+		th.productDetailQnA, td.productDetailQnA, tr.productDetailQnA {
+		display: block;
+	}
+	th.productDetailQnA {
+		text-align: right;
+	}
+	table.productDetailQnA {
+		position: relative;
+		padding-bottom: 0;
+		border: none;
+		box-shadow: 0 0 10px rgba(0, 0, 0, .2);
+	}
+	thead.productDetailQnA {
+		float: left;
+		white-space: nowrap;
+	}
+	tbody.productDetailQnA {
+		overflow-x: auto;
+		overflow-y: hidden;
+		position: relative;
+		white-space: nowrap;
+	}
+	tr.productDetailQnA {
+		display: inline-block;
+		vertical-align: top;
+	}
+	th.productDetailQnA {
+		border-bottom: 1px solid #a39485;
+	}
+	td.productDetailQnA {
+		border-bottom: 1px solid #e5e5e5;
+	}
+}

@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yedam.order.mapper.OrderMapper">
+	<insert id="insertOrder" parameterType="OrderVO">	
+		<selectKey keyProperty="ordId" resultType="int" order="BEFORE">
+    		SELECT seq_order_id.NEXTVAL FROM dual
+  		</selectKey>
+		
+		INSERT INTO orders(ord_id,mem_id ,ord_receiver,ord_addr,ord_phone,ord_postcode,ord_totalprice)
+		VALUES(#{ordId},#{memId} , #{ordReceiver}, #{ordAddr}, #{ordPhone}, #{ordPostcode},#{ordTotalprice})
+	</insert>
+
+	<select id="getOrderList" resultType="OrderVO">
+		SELECT o.* , op.* , pay.* ,pro.pro_name, m.mem_name
+		FROM member m ,orders o, orderproduct op,product pro ,payment pay
+		WHERE m.mem_id = o.mem_id 
+		  AND o.ord_id = op.ord_id
+		  AND op.pro_id = pro.pro_id
+		  AND o.ord_id = pay.ord_id
+		ORDER BY o.ord_id desc
+	</select>
+	<!-- 페이징 -->
+	<select id="selectOrderListPage" resultType="OrderVO">
+		<![CDATA[
+		SELECT *
+		FROM (
+		    SELECT ROWNUM rnum, p.*
+		    FROM (
+		        SELECT o.ord_id, o.mem_id, op.pro_id, op.ord_pro_id, op.ord_quant,
+		               op.ord_pro_sumprice, op.ord_status, pay.pay_date,o.ord_addr,o.ord_receiver,
+		               pro.pro_name, m.mem_name, pro.pro_img
+		        FROM member m, orders o, orderproduct op, product pro, payment pay 
+		        WHERE m.mem_id = o.mem_id
+		          AND o.ord_id = op.ord_id
+		          AND op.pro_id = pro.pro_id
+		          AND o.ord_id = pay.ord_id
+		        ORDER BY o.ord_id desc
+		    ) p
+		    WHERE ROWNUM <= #{endNum}
+		)
+		WHERE rnum >= #{startNum}
+		]]>
+	</select>
+	
+	<insert id="insertPayment" parameterType="OrderVO">
+	  <selectKey keyProperty="payId" resultType="int" order="BEFORE">
+	    SELECT seq_payment_id.NEXTVAL FROM dual
+	  </selectKey>
+	  INSERT INTO payment (pay_id, ord_id, pay_date, pay_totalprice, pay_couponprice, pay_code, coup_id,pay_uid)
+	  VALUES (#{payId}, (SELECT ord_id
+						 FROM orders
+						 WHERE ord_id = (SELECT MAX(ord_id) FROM orders)),
+						 sysdate, #{payTotalprice}, #{payCouponprice}, #{payCode}, #{coupId},#{payUid})
+	</insert>
+		<insert id="insertOrderProduct" parameterType="OrderVO">
+		  <selectKey keyProperty="ordProId" resultType="int" order="BEFORE">
+		    SELECT SEQ_ordPro_ID.NEXTVAL FROM dual
+		  </selectKey>
+	    INSERT INTO orderproduct 
+	    	(ord_pro_id,
+	    	 ord_quant,
+	    	 ord_status, 
+	    	 pro_id, 
+	    	 ord_id , 
+	    	 ord_pro_sumprice)
+	    VALUES
+		    (
+		    	#{ordProId},
+		        #{ordQuant},
+		        #{ordStatus},
+		        #{proId},
+		        (SELECT MAX(ord_id) FROM orders),
+		        #{ordProSumprice}
+		    )
+		</insert>
+	<select id="selectSearchOrder" resultType="OrderVO">
+		SELECT o.* , op.* , pay.* ,pro.pro_name, m.mem_name
+		FROM member m ,orders o, orderproduct op,product pro ,payment pay
+		WHERE m.mem_id = o.mem_id 
+		  AND o.ord_id = op.ord_id
+		  AND op.pro_id = pro.pro_id
+		  AND o.ord_id = pay.ord_id
+		  <if test="ordId != 0">
+		  AND o.ord_id = #{ordId}
+		  </if>
+		  <if test="memId != null">
+		  AND o.mem_id = #{memId}
+		  </if>
+		  <if test="ordStatus != null">
+		  AND op.ord_status = #{ordStatus}
+		  </if>
+		ORDER BY o.ord_id desc
+	
+	</select>
+
+	<select id="myOrder" resultType="OrderVO">
+		SELECT * 
+	    FROM orders o JOIN orderproduct p
+        ON o.ord_id = p.ord_id 
+        JOIN payment a
+        ON p.ord_id = a.ord_id
+        join product r
+        ON p.pro_id = r.pro_id
+        WHERE mem_id = #{memId}
+	</select>
+	
+<select id="selectMyOrderPage" resultType="OrderVO">
+	<![CDATA[
+    SELECT *
+    FROM (
+        SELECT rownum as rnum, t.*
+        FROM (
+            SELECT *
+            FROM orders o
+            JOIN orderproduct p ON o.ord_id = p.ord_id 
+            JOIN payment a ON p.ord_id = a.ord_id
+            JOIN product r ON p.pro_id = r.pro_id
+            WHERE mem_id = #{memId}
+            ORDER BY o.ord_id DESC 
+        ) t
+        WHERE rownum <= #{endNum}
+    ) 
+    WHERE rnum >= #{startNum}
+	]]>
+</select>
+	
+	<select id="selectBeforeAddr" resultType="OrderVO">
+		SELECT ord_receiver, ord_phone, ord_addr, ord_postcode
+		FROM orders
+		WHERE ord_id = (SELECT MAX(ord_id)
+		  	   			FROM orders
+		  	  			WHERE mem_id=#{memId})
+	</select>
+	
+	<update id="updateOrderStatus" parameterType="OrderVO">
+		UPDATE orderproduct
+		SET ord_status = #{ordStatus}
+		WHERE ord_pro_id = #{ordProId}
+	</update>
+	
+	<select id="selectRefundInfo" resultType="OrderVO">
+		SELECT op.ord_pro_sumprice , p.pay_code, p.pay_uid
+		FROM orderproduct op, orders o , payment p
+		WHERE op.ord_id = o.ord_id
+		  AND o.ord_id = p.ord_id
+		  AND op.ord_pro_id = #{ordProId}
+	</select>
+</mapper>
