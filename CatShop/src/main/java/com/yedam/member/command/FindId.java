@@ -42,7 +42,7 @@ public class FindId implements Command {
 			return "{ \"retCode\" : \"Success\" }.json";
 		} else {
 			// 에러 메시지 출력 후 다시 findIdForm화면으로
-//			req.setAttribute("error", "아이디가 없는데요");
+			// req.setAttribute("error", "아이디가 없는데요");
 			return "{ \"retCode\" : \"Fail\" }.json";	
 		}
 	}
