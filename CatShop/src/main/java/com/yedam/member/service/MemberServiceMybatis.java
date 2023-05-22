@@ -11,9 +11,7 @@ import com.yedam.member.vo.MemberVO;
 
 public class MemberServiceMybatis implements MemberService {
 
-	SqlSession session = DataSource.getInstance().openSession(true); // 자동커밋
-
-	// session.getMapper(인터페이스타입.class); 를 통해 메소드를 호출할수있다
+	SqlSession session = DataSource.getInstance().openSession(true);
 	MemberMapper mapper = session.getMapper(MemberMapper.class);
 
 	@Override
@@ -64,7 +62,6 @@ public class MemberServiceMybatis implements MemberService {
 		mapper.setTempPwd(fPwd);
 	}
 
-	//
 	@Override
 	public int checkId(String id) {
 		return mapper.checkId(id);
@@ -72,7 +69,6 @@ public class MemberServiceMybatis implements MemberService {
 
 	@Override
 	public MemberVO memInfo(String memId) {
-		// TODO Auto-generated method stub
 		return mapper.memInfo(memId);
 	}
 
@@ -82,13 +78,12 @@ public class MemberServiceMybatis implements MemberService {
 	}
 
 	@Override
-
 	public int addCoupon(MemberVO coupvo) {
 		return mapper.insertCoupon(coupvo);
   }
+	
   @Override
 	public List<MemberVO> memberListPage(Pagination paging) {
 		return mapper.selectMemberListPage(paging);
-
 	}
 }

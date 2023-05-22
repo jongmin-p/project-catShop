@@ -14,14 +14,15 @@ public class MyNoticeVO {
 	private int revRate;
 	private String revImage;
 	private String revReply;
+	
 	//qa table
 	private int qaId;
 	private String qaTitle;
 	private String qaDate;
 	private String qaReply;
 	private String qaContent;
+	
 	//join용 product table
 	private String proName;
 	private String proImg;
-	
 }

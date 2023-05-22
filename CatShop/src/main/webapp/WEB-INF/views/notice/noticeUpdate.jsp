@@ -32,8 +32,5 @@
     <button type="submit" class="btn btn-default">수정완료</button>
   </form>
 </div>
-<script>
-	
-</script>
 </body>
 </html>

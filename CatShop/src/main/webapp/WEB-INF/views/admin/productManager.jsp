@@ -223,6 +223,7 @@ table:nth-of-type(2) input {
 	  $('#paging').empty();
 	  getProductManagerList(page);
   }
+  
   //페이지네이션 제작 class="pagingBtn" style="float:left;"
 function createPageLink(page, text) {
   return $('<button>').click(movePage)

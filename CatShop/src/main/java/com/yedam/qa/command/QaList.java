@@ -33,8 +33,10 @@ public class QaList implements Command {
 		if(req.getParameter("page")!=null){
 			page = Integer.parseInt(req.getParameter("page"));
 	    }
+		
 		int startNum = (page-1)*10+1;
         int endNum = page*10;
+        
         //페이징 처리를 위한 정보 담기
 		Pagination paging = new Pagination();
 		paging.setPage(page);
@@ -55,8 +57,5 @@ public class QaList implements Command {
 		System.out.println(json);
 		
 		return json + ".json";
-		
-		
 	}
-
 }

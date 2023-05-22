@@ -23,7 +23,9 @@ public class beforAddrControl implements Command {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String memId = req.getParameter("memId");
 		System.out.println(memId);
+		
 		OrderService service = new OrderServiceImpl();
+		
 		OrderVO ovo = service.getBeforeAddr(memId);
 		System.out.println(ovo);
 		
@@ -35,5 +37,4 @@ public class beforAddrControl implements Command {
 		
 		return gson.toJson(resultMap) + ".json";
 	}
-
 }

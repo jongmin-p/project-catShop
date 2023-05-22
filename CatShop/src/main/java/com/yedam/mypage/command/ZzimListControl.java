@@ -21,5 +21,4 @@ public class ZzimListControl implements Command {
 		req.setAttribute("list",service.zzimList((String)session.getAttribute("logId")));
 		return "mypage/zzimList2.tiles";
 	}
-
 }

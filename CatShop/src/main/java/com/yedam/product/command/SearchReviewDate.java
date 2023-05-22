@@ -30,5 +30,4 @@ public class SearchReviewDate implements Command {
 
 		return gson.toJson(searchDate) + ".json";
 	}
-
 }

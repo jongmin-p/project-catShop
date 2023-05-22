@@ -22,6 +22,7 @@ public class orderManageControl implements Command {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int page = 1;
 		OrderService countService = new OrderServiceImpl();
+		
 		//페이지 클릭시 페이지 번호 변경
 		if(req.getParameter("page")!=null){
 			page = Integer.parseInt(req.getParameter("page"));
@@ -31,6 +32,7 @@ public class orderManageControl implements Command {
 
 			int startNum = (page-1)*10+1;
 	        int endNum = page*10;
+	        
 	        //페이징 처리를 위한 정보 담기
 			Pagination paging = new Pagination();
 			paging.setPage(page);
@@ -58,12 +60,12 @@ public class orderManageControl implements Command {
 		}
 		
 		
-		
 		//총 상품 개수 조회
 		int count = countService.orderList().size();
 
 		int startNum = (page-1)*10+1;
         int endNum = page*10;
+        
         //페이징 처리를 위한 정보 담기
 		Pagination paging = new Pagination();
 		paging.setPage(page);
@@ -80,12 +82,7 @@ public class orderManageControl implements Command {
         req.setAttribute("paging", paging);
         System.out.println(paging);
 		System.out.println(service.orderListPage(ovo));
+		
 		return "admin/orderManage.tiles";
-		
-		
-		
-		
-		
 	}
-
 }

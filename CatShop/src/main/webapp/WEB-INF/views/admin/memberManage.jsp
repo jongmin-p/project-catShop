@@ -102,7 +102,6 @@ table:nth-of-type(2) input {
 							<th>권한</th>
 							<th>수정</th>
 							<th>삭제</th>
-							<!-- <th colspan="2" style="text-align: center">삭제</th> -->
 						</tr>
 					</thead>
 					<tbody id="list"></tbody>
@@ -127,18 +126,22 @@ table:nth-of-type(2) input {
 		    data: { page: page },
 		    success: function (result) {
 		      console.log(result.paging);
-		      $(result.memberList).each(function (idx, item) { //인덱스, 인덱스에 들어있는 값
-					$('#list').append(makeRow(item)); //화면출력
+		      $(result.memberList).each(function (idx, item) {
+					$('#list').append(makeRow(item));
 			  });
-		      $(result.memberList).each(function (idx, item) { //인덱스, 인덱스에 들어있는 값
-					$('#list').append(makeRowUpd(item)); //화면출력
+		      
+		      $(result.memberList).each(function (idx, item) {
+					$('#list').append(makeRowUpd(item));
 			  });
+		      
 		      var beginPage = parseInt(result.paging.beginPage);
 		      var endPage = parseInt(result.paging.endPage);
 		      var currentPage = parseInt(result.paging.page);
+		      
 		      console.log(beginPage);
 		      console.log(endPage);
 		      console.log(currentPage);
+		      
 		      if(result.paging.prev) {
 		        $('#paging').append($('<a>').click(movePage)
 		        	    .attr('class', 'pagingBtn')
@@ -146,6 +149,7 @@ table:nth-of-type(2) input {
 		                          .data('page',(beginPage-1))
 		                          .text('prev'));
 		      }
+		      
 		      for (var i = beginPage; i <= endPage; i++) {
 		        if (i === currentPage) {
 		        	var link = createPageLink(i, i);
@@ -155,6 +159,7 @@ table:nth-of-type(2) input {
 		          $('#paging').append(link);
 		        }
 		      }
+		      
 		      if(result.paging.next) {
 		        $('#paging').append($('<a>').click(movePage)
 		        	    .attr('class', 'pagingBtn')
@@ -168,6 +173,7 @@ table:nth-of-type(2) input {
 		    },
 		  });
 		}
+	  
 	  //페이지 이동
 	  function movePage() {
 		  console.log(this)
@@ -176,6 +182,7 @@ table:nth-of-type(2) input {
 		  $('#paging').empty();
 		  getMemberListList(page);
 	  }
+	  
 	  //페이지네이션 제작
 	  function createPageLink(page, text) {
 	  return $('<a>').click(movePage)
@@ -184,9 +191,6 @@ table:nth-of-type(2) input {
 	  				 .data('page',page)
 	  			  	 .text(text);
 	  }
-	
-	
-
 
 	/////////////////////////////////////////////////////////////////////
 
@@ -221,7 +225,6 @@ table:nth-of-type(2) input {
 		searchMember();
 	});
 
-
 	// 검색 버튼 안 누르고, 그냥 아이디 검색 후 엔터 눌렀을 때도, searchMember() 실행
 	$('#search-input').keypress(function (event) {
 		if (event.which == 13) {
@@ -230,62 +233,31 @@ table:nth-of-type(2) input {
 		}
 	});
 
-
-	// $('#search-input').keypress(function (event) {
-	// 	if (event.which == 13) {
-	// 		$('.search-btn').click();
-	// 		return false;
-	// 	}
-	// });
-
-	// .search-btn
-	/* 	$('.search-btn').click( function(e) {
-			let memId = $('#search-input').val();
-			console.log('출력 테스트 - jsp 파일 -> ' + memId);
-	
-			$.ajax({
-				url : "searchMemberManage.do",
-				data : {memId : memId},
-				success : function(result) {
-					console.log(result);
-	
-					$('#search-input').val("");
-					$("#list").find("tr").remove();
-					$(result).each(function(idx, item) {
-						$("#list").append(makeRow(item));
-					});
-					$(result).each(function(idx, item) {
-						$("#list").append(makeRowUpd(item));
-					});
-				},
-				error : function(reject) {
-					console.log(reject);
-				}
-			})		
-		}) */
-
 	/////////////////////////////////////////////////////////////////////
+	
 	//목록출력 함수  (더블 클릭시, 수정 인풋으로 바뀜)
 	function makeRow(member = {}) {
 		let tr = $("<tr />");
 
 		tr.append(
-			$('<td />').text(member.memId), //innerText
+			$('<td />').text(member.memId),
 			$('<td />').text(member.memPw),
 			$('<td />').text(member.memName),
 			$('<td />').text(member.memPhone),
 			$('<td />').text(member.memEmail),
-			$('<td />').text(member.memUser), //콜백함수 : 클릭이라는 이벤트가 발생해야 된다 뒤에()를 붙히면 클릭하기도 전에 실행된다
+			$('<td />').text(member.memUser),
+			
 			$("<td />").append(
 				$("<button />")
 					.addClass("btn btn-success updbtn")
 					.text("수정")
 					.attr("memIdUpd", member.memId)
 			),
+			
 			$('<td />').append( //td 추가
 				$('<button class="btn btn-danger">삭제</button>')
-					.attr('memIdDel', member.memId) // .attr => setAttribute, 만들다
-					.on('click', deleteMemberFnc) //이벤트
+					.attr('memIdDel', member.memId)
+					.on('click', deleteMemberFnc)
 			)
 		);
 
@@ -331,11 +303,11 @@ table:nth-of-type(2) input {
 			return;
 		}
 
-		let memId = $(e.target).attr('memIdDel'); // .attr => getAttribute, 가져오다
+		let memId = $(e.target).attr('memIdDel');
 
 		$.ajax({
-			url: 'removeMember.do',	//회원 삭제하는 url 및 컨트롤 등록하기
-			data: { memId: memId },		//removeMember.do?id=user
+			url: 'removeMember.do',
+			data: { memId: memId },
 			success: function (result) {
 				console.log(result);
 				if (result.retCode == 'Success') {
@@ -392,46 +364,4 @@ table:nth-of-type(2) input {
 			}
 		})
 	} //end of updateMemberFnc
-
-
-	/* //수정버튼
-	function updateMemberFnc(e) {
-		let tr = $(e.target).parent().parent(); //tr
-	
-		let id = $("#id").val();
-		let password = $("#password").val();
-		let name = $("#name").val();
-		let phone = $("#phone").val();
-		let email = $("#email").val();
-		let user = $("#user").val();
-	
-		let formData = new FormData();
-		formData.append("id", id);
-		formData.append("password", password);
-		formData.append("name", name);
-		formData.append("phone", phone);
-		formData.append("email", email);
-		formData.append("user", user);
-	
-	
-		$.ajax({
-			url: 'updateMember.do',
-			method: 'post',
-			data: formData,
-			contentType: false,
-			processData: false,
-			success: function (result) {
-				console.log(result);
-				if (result.retCode == 'Success') {
-					tr.replaceWith(makeRow(result.member));
-					// tr.replaceWith(makeRowUpd(result.member));
-				} else {
-					alert("입력 미완");
-				}
-			},
-			error: function (err) {
-				console.log(err);
-			}
-		})
-	} //end of updateMemberFnc */
 </script>

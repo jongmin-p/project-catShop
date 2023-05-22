@@ -20,7 +20,5 @@ public class ZzimServiceImpl implements ZzimService{
 	@Override
 	public int deleteZzim(int zzimId) {
 		return mapper.deleteZzim(zzimId);
-		
 	}
-	
 }

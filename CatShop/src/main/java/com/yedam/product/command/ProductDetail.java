@@ -35,5 +35,4 @@ public class ProductDetail implements Command {
 		req.setAttribute("reviewList", service.getReviewList(Integer.parseInt(pid)));
 		return "product/productDetail.tiles";
 	}
-
 }

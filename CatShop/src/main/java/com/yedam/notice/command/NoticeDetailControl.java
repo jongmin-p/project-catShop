@@ -16,9 +16,8 @@ public class NoticeDetailControl implements Command {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		int notId = Integer.parseInt(req.getParameter("notId")); // form>input:name속성.
-		System.out.println(notId);
+		int notId = Integer.parseInt(req.getParameter("notId"));
+
 		NoticeService service = new NoticeServiceImpl();		
 		req.setAttribute("list",service.getNotice(notId));
 		
@@ -26,5 +25,4 @@ public class NoticeDetailControl implements Command {
 		req.setAttribute("auth",(String)session.getAttribute("Auth"));
 		return "notice/noticeDetail.tiles";
 	}
-
 }

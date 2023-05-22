@@ -44,10 +44,10 @@ public class removeCartControl implements Command {
 				}
 
 			}
-			return json + ".json";
 			
+			return json + ".json";
 		}
+		
 		return null;
 	}
-
 }

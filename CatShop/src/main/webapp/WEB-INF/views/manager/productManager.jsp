@@ -133,38 +133,6 @@ td.image_container img {
       )
     );
 
-    // 		$(".updbtn").on("click", function (e) {
-    // 			console.log(e.target)
-    // 			let pid = $(this).closest('tr').children().eq(0).text();
-    // 		    let pimg = $(this).closest('tr').children().eq(1).children().attr("src")
-    // 		    let pname = $(this).closest('tr').children().eq(2).text();
-    // 		    let pprice = $(this).closest('tr').children().eq(3).text();
-    // 		    let pdesc = $(this).closest('tr').children().eq(4).text();
-    // 		    let pcategory = $(this).closest('tr').children().eq(5).text();
-
-    // 			let nTr = $("<tr />").append(
-    // 				$("<td />").append($("<input id='pid' />").val(pid)),
-    // 				$("<td />").append(
-    // 						$('<img>', {
-    // 							'src' : pimg,
-    // 							'width' : '100px',
-    // 							'height' : '100px',
-    // 							'id' : 'proImg'
-    // 						})
-    // 					),
-    // 				$("<td />").append($("<input id='pname' />").val(pname)),
-    // 				$("<td />").append($("<input id='pprice' />").val(pprice)),
-    // 				$("<td />").append($("<input id='pdesc' />").val(pdesc)),
-    // 				$("<td />").append($("<input id='pcategory' />").val(pcategory)),
-    // 				$("<td />").append(
-    // 				        $(
-    // 				          "<button onclick='updateProductFnc(event)' class='btn btn-success updbtn'>수정 완료</button>"
-    // 				        )
-    // 				      )
-    // 			)
-    // 			$(this).closest('tr').replaceWith(nTr);
-    // 		})
-
     return tr;
   }
 

@@ -190,7 +190,6 @@ pageEncoding="UTF-8"%>
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <!-- <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5> -->
             <button
               type="button"
               class="btn-close"
@@ -264,7 +263,6 @@ pageEncoding="UTF-8"%>
             </form>
           </div>
           <div class="modal-footer">
-            <!-- <button type="button" class="btn btn-primary">Understood</button> -->
           </div>
         </div>
       </div>
@@ -336,8 +334,6 @@ pageEncoding="UTF-8"%>
 
       // 빈 칸일 때 에러 메시지 발생
       function setMessage(msg, element) {
-        //${msg}는 템플릿 리터럴(JS이므로 브라우저에서 돌아감(EL은 서버에서 돌아감))
-        //${'${msg}'}로 변경 해야 함.
         document.getElementById(
           "msg"
         ).innerHTML = `<i class="fa fa-exclamation-circle"> ${"${msg}"}</i>`;

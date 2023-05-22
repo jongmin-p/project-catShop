@@ -63,5 +63,4 @@ public class ModifyReviewManage implements Command {
 		
 		return gson.toJson(resultMap) + ".json";
 	}
-
 }

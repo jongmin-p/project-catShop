@@ -15,6 +15,7 @@ public class UpdateInfo implements Command {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
 		MemberService service = new MemberServiceMybatis();
 		MemberVO mvo = new MemberVO();
 		
@@ -29,5 +30,4 @@ public class UpdateInfo implements Command {
 		
 		return "updateInfoForm.do";
 	}
-
 }

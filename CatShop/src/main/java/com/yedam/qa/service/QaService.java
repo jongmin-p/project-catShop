@@ -7,10 +7,10 @@ import com.yedam.member.vo.MemberVO;
 import com.yedam.qa.vo.QaVO;
 
 public interface QaService {
-	public List<QaVO> qaList(int proId); // 제품 상세페이지 Q&A 목록 출력
-	public int addProductQa(QaVO qa); // Q&A 등록
+	public List<QaVO> qaList(int proId);
+	public int addProductQa(QaVO qa);
 	
-	public List<QaVO> qaListAll();		// jm 추가
+	public List<QaVO> qaListAll();
 	public int removeQa(int qaId);
 	public int modifyQa(QaVO vo);
 	public List<QaVO> qaListAllPage(Pagination paging);

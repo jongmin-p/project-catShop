@@ -102,9 +102,6 @@ button {
 				<c:forEach var="list" items="${list }">
 					<div class="post-title" onclick="togglePostContent(${list.revId})">
 						<div class="product-cart d-flex">
-							<!-- 							<div class="one-eight text-center"> -->
-							<!-- 								<div class="display-tc"></div> -->
-							<!-- 							</div> -->
 							<div class="one-eight text-center">
 								<div class="display-tc">
 									<img src="images/${list.revImage }" class="ordImg">

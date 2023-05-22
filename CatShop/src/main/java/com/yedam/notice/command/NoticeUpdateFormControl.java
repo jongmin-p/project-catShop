@@ -20,5 +20,4 @@ public class NoticeUpdateFormControl implements Command {
 		
 		return "notice/noticeUpdate.tiles";
 	}
-
 }

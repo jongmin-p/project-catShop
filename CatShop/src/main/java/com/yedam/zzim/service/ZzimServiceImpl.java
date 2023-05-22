@@ -26,10 +26,5 @@ public class ZzimServiceImpl implements ZzimService {
 	@Override
 	public int deleteProductZzim(String zzimuser, int proId) {
 		return mapper.deleteProductZzim(zzimuser, proId);
-//		System.out.println(zzimuser + " " + proId);
-//		return 0;
 	}
-	
-	
-	
 }

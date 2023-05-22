@@ -21,6 +21,7 @@ public class ProductCartAdd implements Command {
 		String proId = req.getParameter("proId");
 		String caQuant = req.getParameter("caQuant");
 		String caSumprice = req.getParameter("caSumprice");
+		
 		// id값 확인 후 없을 경우 login페이지 안내
 		if(memId != null) {
 			ProductVO vo = new ProductVO();
@@ -40,10 +41,6 @@ public class ProductCartAdd implements Command {
 			json = "{\"retCode\": \"NoMember\"}";
 		}
 		
-		
-		
 		return json + ".json";
-
 	}
-
 }

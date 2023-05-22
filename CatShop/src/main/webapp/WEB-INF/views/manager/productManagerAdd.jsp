@@ -21,15 +21,6 @@
 	<form name="newProduct" action="insertProductManager.do"
 		class="form-horizontal" method="post" enctype="multipart/form-data">
 
-
-<!-- 		<div class="form-group row"> -->
-<!-- 			<label class="col-sm-2">상품 ID</label> -->
-<!-- 			<div class="com-sm-3"> -->
-<!-- 				<input type="text" id="proId" name="proId" -->
-<!-- 					class="form-control"> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-
 		<div class="form-group row">
 			<label class="col-sm-2">상품 이름</label>
 			<div class="com-sm-3">

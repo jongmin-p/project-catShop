@@ -28,7 +28,5 @@ public class NoticeUpdateControl implements Command {
 		service.updateNotice(nvo);
 		
 		return "noticeList.do";
-		
 	}
-
 }

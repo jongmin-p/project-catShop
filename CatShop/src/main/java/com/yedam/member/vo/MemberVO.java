@@ -2,7 +2,7 @@ package com.yedam.member.vo;
 
 import lombok.Data;
 
-@Data // lombok을 활용해서 getter , setter, toString, hashCode 등의 메소드들을 불러옴
+@Data
 public class MemberVO {
 
 	private String memId;
@@ -11,6 +11,7 @@ public class MemberVO {
 	private String memPhone;
 	private String memEmail;
 	private String memUser;
+	
 	//coupon table
 	private int coupId;
 	private String coupName;

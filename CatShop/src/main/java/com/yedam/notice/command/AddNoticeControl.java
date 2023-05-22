@@ -26,9 +26,6 @@ public class AddNoticeControl implements Command {
 		NoticeService service = new NoticeServiceImpl();
 		service.addNotice(notice);
 		
-	
-		
 		return "noticeList.do";
 	}
-
 }

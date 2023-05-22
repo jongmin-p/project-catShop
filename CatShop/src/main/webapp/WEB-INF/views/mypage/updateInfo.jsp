@@ -74,7 +74,6 @@ pageEncoding="UTF-8"%>
          }else if(inputs[4].value == '' && inputs[5].value == ''){
             alert("수정완료!")
             return true;
-
          }
     }
      

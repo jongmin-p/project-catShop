@@ -72,8 +72,6 @@
 		$(this).prop("disabled", true);
 		$(this).prop("disabled", false);
 	
-	
-	
 		$.ajax({
 			url: "insertProductQa.do",
 			method: "post",
@@ -95,5 +93,4 @@
 			},
 		});
 	})
-
 </script>

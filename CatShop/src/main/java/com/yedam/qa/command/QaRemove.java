@@ -27,5 +27,4 @@ public class QaRemove implements Command {
 		
 		return json + ".json";
 	}
-
 }

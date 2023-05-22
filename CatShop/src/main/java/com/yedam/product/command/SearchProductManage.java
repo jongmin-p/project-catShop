@@ -21,19 +21,22 @@ public class SearchProductManage implements Command {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		int page = 1;
+		
 		String proId = req.getParameter("proId");
 		String proName = req.getParameter("proName");
 		System.out.println(req.getParameter("page"));
+		
 		if(req.getParameter("page")!=null){
 			page = Integer.parseInt(req.getParameter("page"));
 		} else {
 			page = 1;
 		}
-		System.out.println(proId);
-		System.out.println(proName);
-		System.out.println(page);
+
+
 		ProductVO pvo = new ProductVO();
+		
 		ProductService service = new ProductServiceImpl();
+		
 		if(proId.equals("") && !proName.equals("")) {
 			System.out.println("상품명 검색");
 			int startNum = (page-1)*10+1;
@@ -44,7 +47,9 @@ public class SearchProductManage implements Command {
 	        pvo.setProName(proName);
 	        pvo.setStartNum(startNum);
 	        pvo.setEndNum(endNum);
+	        
 	        System.out.println(pvo);
+	        
 	        //검색한 상품 개수 조회
 	        int count = service.searchProduct(proName).size();
 
@@ -56,9 +61,7 @@ public class SearchProductManage implements Command {
 			paging.setTotalCount(count);
 			paging.setStartNum(startNum);
 	        paging.setEndNum(endNum);
-	        
-	        
-	       
+
 	        
 			List<ProductVO> searchReview = service.searchProNameList(pvo);
 
@@ -72,8 +75,8 @@ public class SearchProductManage implements Command {
 			System.out.println(json);
 			
 			return json + ".json";
-		}
-		else if(proName.equals("") && !proId.equals("")) {
+			
+		} else if(proName.equals("") && !proId.equals("")) {
 			System.out.println("상품코드 검색");
 	        pvo.setProId(Integer.parseInt(proId));
 	        int count = service.searchProIdList(pvo).size();
@@ -83,6 +86,7 @@ public class SearchProductManage implements Command {
 
 			int startNum = (page-1)*10+1;
 	        int endNum = page*10;
+	        
 	        //페이징 처리를 위한 정보 담기
 			Pagination paging = new Pagination();
 			paging.setPage(page);
@@ -108,11 +112,6 @@ public class SearchProductManage implements Command {
 			return  json + ".json";
 		}
 		
-		
-		
 		return null; 
-		
-		
 	}
-
 }

@@ -25,18 +25,11 @@
 		AND c.mem_id = #{memId}
 	</select>
 
-	<!-- 쿠폰 없는 회원정보 ver. -->
 	<select id="memberList" resultType="MemberVO">
 		SELECT * FROM member ORDER BY
 		mem_id
 	</select>
 	
-	<!-- memberList.do 에 쿠폰까지 출력한 ver.     -> 원하면 회원관리 페이지에도 추가로 출력 가능 -->
-<!-- 	<select id="memberList" resultType="MemberVO">
-		SELECT m.mem_id, m.mem_pw, m.mem_name, m.mem_phone, m.mem_email, m.mem_user, c.coup_id, c.coup_price
-		FROM member m LEFT JOIN coupon c ON m.mem_id = c.mem_id
-	</select> -->
-
 	<select id="selectMemberListPage" resultType="MemberVO">
 	  <![CDATA[
 	    SELECT *
@@ -52,7 +45,6 @@
 	    WHERE rnum >= #{startNum}
 	  ]]>
 	</select>
-	
 
 	<delete id="deleteMember" parameterType="String">
 		DELETE FROM member
@@ -82,7 +74,6 @@
 		WHERE mem_id=#{memId}
 	</update>
 
-	<!-- -->
 	<select id="getFindId" parameterType="String"
 		resultType="MemberVO">
 		SELECT mem_id
@@ -99,7 +90,6 @@
 		mem_email = #{memEmail}
 	</select>
 
-	<!-- -->
 	<update id="setTempPwd" parameterType="MemberVO">
 		UPDATE member
 		SET
@@ -107,7 +97,6 @@
 		WHERE mem_id=#{memId}
 	</update>
 
-	<!-- -->
 	<select id="checkId" parameterType="String" resultType="Integer">
 		SELECT COUNT(*)
 		FROM member
@@ -119,13 +108,11 @@
 		WHERE mem_id = #{memId}
 	</select>
 	
-	<!--  -->
 	<select id="searchSpecificMember" resultType="MemberVO">
 		SELECT * FROM member
 		WHERE mem_id = #{memId}
 	</select>
 	
-	<!--  -->
 	<insert id="insertCoupon" parameterType="MemberVO">
 	  <selectKey keyProperty="coupId" resultType="int" order="BEFORE">
 	    SELECT seq_coup_id.NEXTVAL FROM dual

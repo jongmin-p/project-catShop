@@ -90,18 +90,13 @@
 				<i class="fas fa-table me-1"></i> Q&A 검색 결과
 			</div>
 			<div class="card-body">
-				<!-- <input type="file" id="fileUpload" accept="images/*"
-				style="display: none" onchange="setThumbnail(event);" /> -->
 				<table id="datatablesSimple" class="table">
 					<thead>
 						<tr>
 							<th>QA 글 번호</th>
 							<th>상품 번호</th>
 							<th>멤버 아이디</th>
-<!-- 							<th>글 제목</th> -->
-<!-- 							<th>글 내용</th> -->
 							<th>작성 일자</th>
-<!-- 							<th>댓글</th> -->
 							<th>댓글</th>
 							<th>삭제</th>
 						</tr>
@@ -282,10 +277,7 @@
 			$("<td />").text(manager.qaId),
 			$("<td />").text(manager.proId),
 			$("<td />").text(manager.memId),
-// 			$("<td />").text(manager.qaTitle),
-// 			$("<td />").text(manager.qaContent),
 			$("<td />").text(manager.qaDate),
-// 			$("<td />").text(manager.qaReply),
 			$("<td />").append(
 			        $("<button />")
 			          .addClass("btn btn-success updbtn")
@@ -296,8 +288,8 @@
 			      ),
 			$('<td />').append( //td 추가
 				$('<button class="btn btn-danger">삭제</button>')
-					.attr('qaIdDel', manager.qaId) // .attr => setAttribute, 만들다
-					.on('click', deleteQaFnc) //이벤트
+					.attr('qaIdDel', manager.qaId)
+					.on('click', deleteQaFnc)
 			)
 		);
 
@@ -312,10 +304,7 @@
 			let qid = $(this).closest("tr").children().eq(0).text();
 			let pid = $(this).closest("tr").children().eq(1).text();
 			let mid = $(this).closest("tr").children().eq(2).text();
-// 			let qtitle = $(this).closest("tr").children().eq(3).text();
-// 			let qcontent = $(this).closest("tr").children().eq(4).text();
 			let qdate = $(this).closest("tr").children().eq(3).text();
-// 			let qreply = $(this).closest("tr").children().eq(6).text();
 			
 			if($(this).closest("tr").children().eq(0).text() == manager.qaId){
 				$('#qContent').val(manager.qaContent)
@@ -328,10 +317,7 @@
 				$("<td id='qid'/>").text(qid),
 				$("<td id='pid'/>").text(pid),
 				$("<td id='mid'/>").text(mid),
-// 				$("<td id='qtitle'/>").text(qtitle),
-// 				$("<td id='qcontent'/>").text(qcontent),
 				$("<td id='qdate'/>").text(qdate),
-// 				$("<td id='qreply'/>").text(qreply),
 				$("<td />").append(
 			          $(
 			            "<button onclick='updateProductFnc(event)' class='btn btn-success updbtn'>작성 중</button>"
@@ -353,7 +339,6 @@
 		let qaId = $(e.target).attr("qaIdDel");
 		console.log(qaId);
 
-		//
 		$.ajax({
 			url: "removeQa.do",
 			data: { qaId: qaId },

@@ -33,5 +33,4 @@ public class ProductZzimAdd implements Command {
 		
 		return json + ".json";
 	}
-
 }

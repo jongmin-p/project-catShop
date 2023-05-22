@@ -19,9 +19,11 @@ public class addPaymentControl implements Command {
 		String payCouponprice = req.getParameter("payCouponprice");
 		String payCode = req.getParameter("payCode");
 		String payTotalprice = req.getParameter("payTotalprice");
+		
 		System.out.println(payTotalprice);
 		
 		OrderVO ovo = new OrderVO();
+		
 		ovo.setCoupId(Integer.parseInt(coupId));
 		ovo.setPayCouponprice(Integer.parseInt(payCouponprice));
 		ovo.setPayCode(payCode);
@@ -38,5 +40,4 @@ public class addPaymentControl implements Command {
 		
 		return json + ".json";
 	}
-
 }

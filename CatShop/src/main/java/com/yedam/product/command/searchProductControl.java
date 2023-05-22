@@ -22,6 +22,7 @@ public class searchProductControl implements Command {
 			ProductService service = new ProductServiceImpl();
 			req.setAttribute("list", service.searchProduct(keyword));
 			System.out.println(service.searchProduct(keyword));
+			
 		} else if(req.getParameter("menu") != null ) {
 			String menu = req.getParameter("menu");
 
@@ -32,5 +33,4 @@ public class searchProductControl implements Command {
 
 		return "search/search.tiles";
 	}
-
 }

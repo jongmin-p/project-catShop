@@ -43,5 +43,4 @@ public interface ProductMapper {
 	
 
 	public int insertReview(ProductVO review); // 리뷰 등록
-
 }

@@ -36,5 +36,4 @@ public class SearchQaManage implements Command {
 
 		return gson.toJson(searchQa) + ".json";
 	}
-
 }

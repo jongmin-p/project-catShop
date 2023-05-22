@@ -15,5 +15,4 @@ public class orderControl implements Command {
 		
 		return "order/orderPage.tiles";
 	}
-
 }

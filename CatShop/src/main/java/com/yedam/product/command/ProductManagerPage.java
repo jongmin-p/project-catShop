@@ -14,5 +14,4 @@ public class ProductManagerPage implements Command {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		return "admin/productManager.tiles";
 	}
-
 }

@@ -11,12 +11,14 @@ public class OrderVO {
 	private String ordPhone;
 	private int ordTotalprice;
 	private String ordPostcode;
+	
 	// orderproduct table
 	private int ordProId;
 	private int ordQuant;
 	private int proId;
 	private int ordProSumprice;
 	private String ordStatus;
+	
 	//payment
 	private int payId;
 	private String payDate;
@@ -25,7 +27,6 @@ public class OrderVO {
 	private String payCode;
 	private int coupId;
 	private String payUid;
-	
 	private String memName;
 	private String proName;
 	//검색조건
@@ -37,5 +38,4 @@ public class OrderVO {
 	//페이징
 	private int startNum;
 	private int endNum; 
-	
 }

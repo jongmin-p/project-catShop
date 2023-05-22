@@ -25,24 +25,11 @@ public class FindPwd implements Command {
 		String name = req.getParameter("name");
 		String email = req.getParameter("email");
 		String id = req.getParameter("id");
-		
-		// System.out.println("테스트 " + name);
-		// System.out.println("테스트 " + email);
-		// System.out.println("테스트 " + id);
-
 		MemberService service = new MemberServiceMybatis();
 
 		MemberVO fPwd = service.findPwd(name, email, id);
 
-
-		
-		// fId 가 뭔가를 반환받았다면(즉, 아이디를 받환받았다면)
 		if (fPwd == null) {
-			// 에러 메시지 출력 후 다시 findIdForm화면으로
-			// req.setAttribute("error", "해당하는 계정이 없는데요");
-//			HttpSession session = req.getSession();
-//			session.setAttribute("error", "해당하는 계정이 없는데요");
-			
 			return "{ \"retCode\" : \"Fail\" }.json";
 		}
 
@@ -56,16 +43,12 @@ public class FindPwd implements Command {
 
 		final String toEmail = fPwd.getMemEmail();
 
-		////////////////////////////////////////////////////////////////////////////////////////////
-
 		Properties props = new Properties();
 		props.put("mail.smtp.host", "smtp.gmail.com"); // for gmail
 		props.put("mail.smtp.port", "587");
 		props.put("mail.smtp.auth", "true");
 		props.put("mail.smtp.starttls.enable", "true");
 		props.put("mail.smtp.ssl.protocols", "TLSv1.2");
-
-		////////////////////////////////////////////////////////////////////////////////////////////
 
 		// 인증 번호 생성기
 		StringBuffer temp = new StringBuffer();
@@ -92,23 +75,16 @@ public class FindPwd implements Command {
 		String AuthenticationKey = temp.toString();
 		System.out.println("임시 비밀번호 = " + AuthenticationKey);
 
-		////////////////////////////////////////////////////////////////////////////////////////////
-		
 		// 생성된 임시 비밀번호를 가지고, DB에서 mem_pw 값을 변경함
 		fPwd.setMemId(id);
 		fPwd.setMemPw(AuthenticationKey);
 		service.setTempPwd(fPwd);
-		
-		////////////////////////////////////////////////////////////////////////////////////////////
 
 		Session session = Session.getInstance(props, new javax.mail.Authenticator() {
 			protected PasswordAuthentication getPasswordAuthentication() {
 				return new PasswordAuthentication(fromEmail, password);
 			}
 		});
-
-		////////////////////////////////////////////////////////////////////////////////////////////
-		////////////////////////////////////////////////////////////////////////////////////////////
 
 		// email 전송
 		try {
@@ -129,9 +105,7 @@ public class FindPwd implements Command {
 			return "{ \"retCode\" : \"Success\" }.json";
 		} catch (Exception e) {
 			e.printStackTrace();
-			return "이메일 전송 실패";				// 근데 애초에 비번 찾을 때 정보가 틀리면 findPwdForm.do 로 이동하게 돼있다. (Line 38)
+			return "이메일 전송 실패";				// 근데 애초에 비번 찾을 때 정보가 틀리면 findPwdForm.do 로 이동하게 돼있다.
 		}
-
-		////////////////////////////////////////////////////////////////////////////////////////////
 	}
 }

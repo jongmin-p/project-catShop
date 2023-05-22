@@ -8,9 +8,9 @@ import com.yedam.qa.vo.QaVO;
 
 
 public interface QaMapper {
-	public List<QaVO> getList(int proId); // 제품 상세페이지 Q&A 목록 출력
-	public int insertProductQa(QaVO qa); // Q&A 등록
-	public List<QaVO> getListAll();		// jm 추가
+	public List<QaVO> getList(int proId);
+	public int insertProductQa(QaVO qa);
+	public List<QaVO> getListAll();
 	public int deleteQa(int qaId);
 	public int updateQa(QaVO qa);
 	public List<QaVO> selectQaListAllPage(Pagination paging);

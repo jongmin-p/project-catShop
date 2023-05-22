@@ -17,12 +17,14 @@ public class MyNoticeListControl implements Command {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		MyNoticeService service = new MyNoticeServiceImpl(); 		
 		HttpSession session = req.getSession();
+		
 		String memId = (String) session.getAttribute("logId");
+		
 		req.setAttribute("list",service.myReview(memId));
 		req.setAttribute("qalist",service.myQa(memId));
+		
 		System.out.println("myQa"+service.myQa(memId));
 		
 		return "mypage/myNotice.tiles";
 	}
-
 }

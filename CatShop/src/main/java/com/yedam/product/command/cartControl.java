@@ -24,16 +24,17 @@ public class cartControl implements Command {
 		ProductService service = new ProductServiceImpl();
 		req.setAttribute("cartList", service.getCartList(logId));
 		System.out.println(service.getCartList(logId));
+		
 		//장바구니 가격 총합
 		List<ProductVO> productList = service.getCartList(logId);
 		int sum = 0;
+		
 		for(ProductVO product : productList) {
 		    sum += product.getCaSumprice();
 		}
+		
 		req.setAttribute("sumPrice", sum);
 		
 		return "cart/cart.tiles";
-		
 	}
-
 }

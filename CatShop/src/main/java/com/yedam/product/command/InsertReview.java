@@ -32,11 +32,13 @@ public class InsertReview implements Command {
 		String fileName = "";
 		System.out.println(rate);
 		System.out.println(proid);
+		
 		Enumeration<?> files = multi.getFileNames();
+		
 		while (files.hasMoreElements()) {
 			String file = (String) files.nextElement();
 			System.out.println(file);
-			fileName = multi.getFilesystemName(file); // 바뀐 파일 이름 읽을 때
+			fileName = multi.getFilesystemName(file);
 		}
 		
 		ProductVO vo = new ProductVO();
@@ -58,5 +60,4 @@ public class InsertReview implements Command {
 		
 		return json + ".json";
 	}
-
 }

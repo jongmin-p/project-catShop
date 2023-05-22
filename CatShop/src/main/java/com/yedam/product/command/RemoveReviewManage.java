@@ -28,5 +28,4 @@ public class RemoveReviewManage implements Command {
 		
 		return json + ".json";
 	}
-
 }

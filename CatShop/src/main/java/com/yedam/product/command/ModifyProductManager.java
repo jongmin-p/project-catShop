@@ -36,10 +36,11 @@ public class ModifyProductManager implements Command {
 		String fileName = "";
 
 		Enumeration<?> files = multi.getFileNames();
+		
 		while (files.hasMoreElements()) {
 			String file = (String) files.nextElement();
 			System.out.println(file);
-			fileName = multi.getFilesystemName(file); // 바뀐 파일 이름 읽을 때
+			fileName = multi.getFilesystemName(file);
 		}
 
 		ProductVO vo = new ProductVO();
@@ -65,5 +66,4 @@ public class ModifyProductManager implements Command {
 		
 		return gson.toJson(resultMap) + ".json";
 	}
-
 }

@@ -24,7 +24,6 @@ public class InsertProductManager implements Command {
 		String encoding = "utf-8";
 		
 		MultipartRequest multi = new MultipartRequest(req, savePath, maxSize, encoding, new DefaultFileRenamePolicy());
-//		String proId = multi.getParameter("proId");
 		String proName = multi.getParameter("proName");
 		String proPrice = multi.getParameter("proPrice");
 		String proDesc = multi.getParameter("proDesc");
@@ -38,7 +37,6 @@ public class InsertProductManager implements Command {
 		}
 		
 		ProductVO product = new ProductVO();
-//		product.setProId(Integer.parseInt(proId));
 		product.setProName(proName);
 		product.setProPrice(Integer.parseInt(proPrice));
 		product.setProDesc(proDesc);
@@ -55,5 +53,4 @@ public class InsertProductManager implements Command {
 			
 		return link;
 	}
-
 }

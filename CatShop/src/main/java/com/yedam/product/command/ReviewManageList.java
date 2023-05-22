@@ -52,10 +52,5 @@ public class ReviewManageList implements Command {
 		System.out.println(json);
 		
 		return json + ".json";
-		
-		
-		
-		
 	}
-
 }

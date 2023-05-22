@@ -27,5 +27,4 @@ public class RemoveProductManager implements Command {
 		
 		return json + ".json";
 	}
-
 }

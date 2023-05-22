@@ -23,6 +23,7 @@ public class ProductManagerList implements Command {
 		
 		int page = 1;
 		ProductService countService = new ProductServiceImpl();
+		
 		//총 상품 개수 조회
 		int count = countService.getPrductCount();
 
@@ -32,6 +33,7 @@ public class ProductManagerList implements Command {
 	    }
 		int startNum = (page-1)*10+1;
         int endNum = page*10;
+        
         //페이징 처리를 위한 정보 담기
 		Pagination paging = new Pagination();
 		paging.setPage(page);
@@ -46,6 +48,7 @@ public class ProductManagerList implements Command {
 		Gson gsonPage = new GsonBuilder().create();
 		
 		JsonObject result = new JsonObject();
+		
 		result.add("paging", gsonPage.toJsonTree(paging));
 		result.add("productList", gson.toJsonTree(productList));
 		String json = gson.toJson(result);
@@ -53,5 +56,4 @@ public class ProductManagerList implements Command {
 		
 		return json + ".json";
 	}
-
 }

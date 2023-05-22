@@ -23,6 +23,7 @@ public class addZzimControl implements Command {
 		// id값 확인 후 없을 경우 login페이지 안내
 		if(memId != null) {
 			ZzimVO vo = new ZzimVO();
+			
 			vo.setMemId(memId);
 			vo.setProId(Integer.parseInt(proId));
 			
@@ -36,10 +37,6 @@ public class addZzimControl implements Command {
 		} else {
 			json = "{\"retCode\": \"NoMember\"}";
 		}
-		
-		
-		
 		return json + ".json";
 	}
-
 }

@@ -18,7 +18,6 @@ public class ProductZzimDel implements Command {
 		String memId = req.getParameter("memId");
 		String proId = req.getParameter("proId");
 		
-		
 		ZzimService service = new ZzimServiceImpl();
 		String json = "";
 		if(service.deleteProductZzim(memId, Integer.parseInt(proId)) > 0) {
@@ -29,5 +28,4 @@ public class ProductZzimDel implements Command {
 		
 		return json + ".json";
 	}
-
 }

@@ -20,11 +20,9 @@ public class refundInfoControl implements Command {
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String ordProId = req.getParameter("ordProId");
-//		String ordId = req.getParameter("ordId"); // 주문번호를 이용하여 한번에 처리도 가능?
-		
+
 		OrderVO ovo = new OrderVO();
 		ovo.setOrdProId(Integer.parseInt(ordProId));
-//		ovo.setOrdId(Integer.parseInt(ordId));
 		OrderService service = new OrderServiceImpl();
 		
 		Map<String, Object> resultMap = new HashMap<>();
@@ -34,7 +32,5 @@ public class refundInfoControl implements Command {
 		System.out.println(resultMap);
 		
 		return gson.toJson(resultMap) + ".json";
-
 	}
-
 }

@@ -139,11 +139,6 @@ public class ProductServiceImpl implements ProductService {
 
 	@Override
 	public List<ProductVO> searchProductList(String proId, String proName) {
-		// TODO Auto-generated method stub
 		return null;
 	}
-
-	
-
-	
 }

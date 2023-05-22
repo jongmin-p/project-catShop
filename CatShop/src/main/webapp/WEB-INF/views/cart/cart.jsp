@@ -13,10 +13,7 @@
 	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="js/payment.js"></script>
 <link rel="stylesheet" href="css/animate.css">
-<!-- <!-- Icomoon Icon Fonts-->
-<!-- <link rel="stylesheet" href="css/icomoon.css"> -->
-<!-- <!-- Ion Icon Fonts-->
-<!-- <link rel="stylesheet" href="css/ionicons.min.css"> -->
+
 <!-- Bootstrap  -->
 <link rel="stylesheet" href="css/bootstrap.min.css">
 
@@ -33,8 +30,6 @@
 
 <!-- Date Picker -->
 <link rel="stylesheet" href="css/bootstrap-datepicker.css">
-<!-- <!-- Flaticons  -->
-<!-- <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css"> -->
 
 <!-- Theme style  -->
 <link rel="stylesheet" href="css/style.css">
@@ -76,9 +71,7 @@ appearance: none;
 .total {
 	text-align : left;
 }
-/* select::-ms-expand { */
-/*         display: none; */
-/* } */
+
 .totalPrice {
 	width:90px !important; 
 }
@@ -266,21 +259,10 @@ button {
 								</div>
 							</div>
 
-<!-- 							<div class="col-md-12"> -->
-<!-- 								<div class="form-group"> -->
-<!-- 									<label for="companyname">이메일</label> <input type="text" -->
-<!-- 										id="remail" class="form-control" placeholder="이메일"> -->
-<!-- 								</div> -->
-<!-- 							</div> -->
 							<div>
-								<!-- 						   	<input type="text" id="sample4_postcode" placeholder="우편번호"> -->
-								<!-- 							<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기"><br> -->
-								<!-- 							<input type="text" id="sample4_roadAddress" placeholder="도로명주소"> -->
 								<input type="text" id="sample4_jibunAddress" placeholder="지번주소"
 									style="display: none;"> <span id="guide"
 									style="color: #999; display: none"></span>
-								<!-- 									<input type="text" id="sample4_detailAddress" placeholder="상세주소"> -->
-								<!-- 									<input type="text" id="sample4_extraAddress" placeholder="참고항목"> -->
 							</div>
 							<div class="col-md-12">
 								<div class="form-group">
@@ -311,19 +293,6 @@ button {
 								<input type="text" id="sample4_postcode" placeholder="우편번호" class="form-control" readonly>
 							</div>
 						</div>
-
-<!-- 						<div class="col-md-6"> -->
-<!-- 							<div class="form-group"> -->
-<!-- 								<label for="email">E-mail Address</label> <input type="text" -->
-<!-- 									id="email" class="form-control" placeholder="E-mail"> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
-<!-- 						<div class="col-md-6"> -->
-<!-- 							<div class="form-group"> -->
-<!-- 								<label for="Phone">Phone Number</label> <input type="text" -->
-<!-- 									id="zippostalcode" class="form-control" placeholder=""> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
 
 						<div class="col-md-12">
 							<div class="form-group">
@@ -400,13 +369,7 @@ button {
 </div>
 
 
-
-
-
 <script>
-
-
-
 //상품 삭제
 $('.closed').click(function () {
 	var $this = $(this);

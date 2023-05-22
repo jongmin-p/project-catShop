@@ -20,5 +20,4 @@ public class ReviewManage implements Command {
 		
 		return "admin/reviewManage.tiles";
 	}
-
 }

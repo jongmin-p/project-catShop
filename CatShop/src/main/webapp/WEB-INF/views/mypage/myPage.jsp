@@ -5,8 +5,3 @@
   <link rel="stylesheet" type="text/css" href="css/juanButton.css" />
 </head>
 <h3>${logName }</h3>
-
-    
-
-    
-  

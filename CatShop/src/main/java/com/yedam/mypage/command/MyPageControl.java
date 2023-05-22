@@ -20,8 +20,6 @@ public class MyPageControl implements Command {
 		req.setAttribute("logName",(String)session.getAttribute("logName"));
 		System.out.println((String)session.getAttribute("logName"));
 		
-		
 		return "mypage/myPage.tiles";
 	}
-
 }

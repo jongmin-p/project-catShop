@@ -13,5 +13,4 @@ public class adminMainControl implements Command {
 		
 		return "admin/adminMain.tiles";
 	}
-
 }

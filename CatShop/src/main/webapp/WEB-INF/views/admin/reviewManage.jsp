@@ -50,12 +50,15 @@ table:nth-of-type(2) input {
 #datatablesSimple1 tr th {
 	width: 100px;
 }
+
 .input-group {
 	margin: 0px !important;
 }
+
 .space {
-	margin-right : 7px !important;
+	margin-right: 7px !important;
 }
+
 .pagingBtn {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -156,8 +159,8 @@ table:nth-of-type(2) input {
 								<th>제품_ID</th>
 								<th>유저_ID</th>
 								<th>리뷰 이미지</th>
-<!-- 								<th>리뷰 제목</th> -->
-<!-- 								<th>리뷰 내용</th> -->
+								<!-- 								<th>리뷰 제목</th> -->
+								<!-- 								<th>리뷰 내용</th> -->
 								<th>별점</th>
 								<th>리뷰 날짜</th>
 								<th>리뷰 댓글</th>
@@ -188,12 +191,13 @@ table:nth-of-type(2) input {
 			</div>
 			<div class="modal-body">
 				<div class="mb-3">
-					<label for="recipient-name" class="col-form-label">제목</label>
-					<input type="text" class="form-control" id="rTitle" readonly>
+					<label for="recipient-name" class="col-form-label">제목</label> <input
+						type="text" class="form-control" id="rTitle" readonly>
 				</div>
 				<div class="mb-3">
 					<label for="recipient-name" class="col-form-label">리뷰내용</label>
-					<textarea id="rContent" class="form-control" rows="5" cols="60" readonly></textarea>
+					<textarea id="rContent" class="form-control" rows="5" cols="60"
+						readonly></textarea>
 				</div>
 				<div class="mb-3">
 					<label for="recipient-name" class="col-form-label">댓글</label>
@@ -281,20 +285,12 @@ table:nth-of-type(2) input {
   			  	 .text(text);
   }
 	
-	
-	
-	
-	
-	
-	
-	
 	$('#closeBtn').click( function() {
 		console.log('클릭')
 		location.reload();
 	})
 	
-	
-	
+
 	function searchReview(){
 		let proId = $('#proIdBtn').val();
 		let memId = $('#memIdBtn').val();
@@ -445,11 +441,9 @@ table:nth-of-type(2) input {
 	          height: "100px",
 	        })
 	      ),
-// 	      $("<td />").text(review.revTitle),
-// 	      $("<td />").text(review.revContent),
+
 	      $("<td />").text(review.revRate),
 	      $("<td />").text(review.revDate),
-// 	      $("<td />").text(review.revReply),
 	      $("<td />").append(
 	        $("<button />")
 	          .addClass("btn btn-success updbtn")
@@ -547,12 +541,10 @@ table:nth-of-type(2) input {
 			let pid = $(this).closest("tr").children().eq(1).text();
 			let mid = $(this).closest("tr").children().eq(2).text();
 			let rimg = $(this).closest("tr").children().eq(3).children().attr("src");
-// 			let rtitle = $(this).closest("tr").children().eq(4).text();
-// 			let rcontent = $(this).closest("tr").children().eq(5).text();
 			let rate = $(this).closest("tr").children().eq(4).text();
 			let rdate = $(this).closest("tr").children().eq(5).text();
-// 			let rReply = $(this).closest("tr").children().eq(8).text();
 			console.log(review)
+			
 			if($(this).closest("tr").children().eq(0).text() == review.revId){
 				$('#rContent').val(review.revContent)
 				$('#rTitle').val(review.revTitle)
@@ -572,11 +564,9 @@ table:nth-of-type(2) input {
 			            class: "image_container"
 			          })
 			        ),
-// 			        $("<td id='rtitle'/>").text(rtitle),
-// 			        $("<td id='rcontent'/>").text(rcontent),
+
 			        $("<td id='rate'/>").text(rate),
 			        $("<td id='rdate'/>").text(rdate),
-// 			        $("<td />").text(rReply),
 			        $("<td />").append(
 			          $(
 			            "<button onclick='updateProductFnc(event)' class='btn btn-success updbtn'>작성 중</button>"
@@ -587,5 +577,4 @@ table:nth-of-type(2) input {
 	    });
 		return tr;
 	}
-	
 </script>

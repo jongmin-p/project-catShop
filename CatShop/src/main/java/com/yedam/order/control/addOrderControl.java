@@ -40,14 +40,13 @@ public class addOrderControl implements Command {
 			return json + ".json";
 		}
 		
-		
-		
 		String coupId = req.getParameter("coupId");
 		String payCouponprice = req.getParameter("payCouponprice");
 		String payCode = req.getParameter("payCode");
 		String payUid = req.getParameter("payUid");
 		String payTotalprice = req.getParameter("payTotalprice");
 		System.out.println(payUid);
+		
 		if(coupId != null) {
 			ovo = new OrderVO();
 			ovo.setCoupId(Integer.parseInt(coupId));
@@ -62,7 +61,6 @@ public class addOrderControl implements Command {
 			ovo.setPayTotalprice(Integer.parseInt(payTotalprice));
 		}
 		
-		
 		service = new OrderServiceImpl();
 		json="";
 		
@@ -72,12 +70,6 @@ public class addOrderControl implements Command {
 			json = "{\"retCode\": \"Fail\"}";
 		}
 		
-		
-		
 		return json + ".json";
-		
-		
-		
 	}
-
 }

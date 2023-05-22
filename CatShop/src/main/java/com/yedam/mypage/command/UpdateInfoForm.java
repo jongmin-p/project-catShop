@@ -22,5 +22,4 @@ public class UpdateInfoForm implements Command {
 		
 		return "mypage/updateInfo.tiles";
 	}
-
 }

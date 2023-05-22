@@ -25,7 +25,6 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public NoticeVO getNotice(int notId) {
-		// TODO Auto-generated method stub
 		return mapper.selectNotice(notId);
 	}
 
@@ -37,7 +36,6 @@ public class NoticeServiceImpl implements NoticeService{
 
 	@Override
 	public int updateNotice(NoticeVO nvo) {
-		// TODO Auto-generated method stub
 		return mapper.updateNotice(nvo);
 	}
 }

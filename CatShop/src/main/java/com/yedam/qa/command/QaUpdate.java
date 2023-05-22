@@ -26,7 +26,6 @@ public class QaUpdate implements Command {
 		String qcontent = req.getParameter("qcontent");
 		String qdate = req.getParameter("qdate");
 		String qReply = req.getParameter("qReply");
-
 		
 		QaVO vo = new QaVO();
 		vo.setQaId(Integer.parseInt(qid));
@@ -52,5 +51,4 @@ public class QaUpdate implements Command {
 
 		return gson.toJson(resultMap) + ".json";
 	}
-
 }

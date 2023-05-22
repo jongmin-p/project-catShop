@@ -29,6 +29,7 @@ public class InsertProductQa implements Command {
 		
 		String json = "";
 		QaService service = new QaServiceImpl();
+		
 		if(service.addProductQa(qa) > 0) {
 			json = "{\"retCode\": \"Success\"}";
 		} else {
@@ -37,5 +38,4 @@ public class InsertProductQa implements Command {
 		
 		return json + ".json";
 	}
-
 }

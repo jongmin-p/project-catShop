@@ -24,5 +24,4 @@ public class NoticeListControl implements Command {
 		
 		return "notice/noticeList.tiles";
 	}
-
 }

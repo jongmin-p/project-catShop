@@ -20,12 +20,15 @@ public class SearchReviewManage implements Command {
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String memId = req.getParameter("memId");
 		String proId = req.getParameter("proId");
+		
 		if(memId.equals("")) {
 			memId = null;
 		}
+		
 		if(proId.equals("")) {
 			proId = null;
 		}
+		
 		ProductService service = new ProductServiceImpl();
 
 		List<ProductVO> searchReview = service.searchReviewList(memId, proId);
@@ -34,5 +37,4 @@ public class SearchReviewManage implements Command {
 
 		return gson.toJson(searchReview) + ".json";
 	}
-
 }

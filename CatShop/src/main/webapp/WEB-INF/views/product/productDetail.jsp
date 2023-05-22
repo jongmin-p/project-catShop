@@ -87,14 +87,11 @@
 						<div class="main-border-button">
 							<c:choose>
 								<c:when test="${zzimUser.proId eq proDetail.proId}">
-									<!-- 										<a id="zzim" class="selected" style="cursor: pointer;">찜 -->
-									<!-- 											취소</a> -->
 									<a id="zzim" class="selected" style="cursor: pointer;"> <i
 										class="fa fa-heart text-danger"></i>
 									</a>
 								</c:when>
 								<c:otherwise>
-									<!-- 										<a id="zzim" class="" style="cursor: pointer;">찜 하기</a> -->
 									<a id="zzim" class="" style="cursor: pointer;"><i
 										class="fa fa-heart"></i></a>
 								</c:otherwise>
@@ -276,46 +273,6 @@
 <!-- ***** Product Area Ends ***** -->
 
 <script>
-// 	let revId = $(".revId");
-// 	revId.each(function(index, item){
-// 			console.log(item.value);
-// 			fetch("replyList.do?revId=" + item.value)
-// 			  .then((resolve) => resolve.json())
-// 			  .then((result) => {
-// 				  console.log(result);
-// 				  result.forEach((reply) => {
-// 				    	makeReply(reply);
-// 				       });
-// 			  })
-// 			  .catch((error) => {
-// 				  console.log(error);
-// 			  })
-			
-// 		});
-
-// 	let revId = $(".revId");
-// 	async function fetchReplyList(revId) {
-// 	  try {
-// 	    const response = await fetch("replyList.do?revId=" + revId);
-// 	    const result = await response.json();
-// 	    console.log(result);
-// 	    result.forEach((reply) => {
-// 	    	makeReply(reply);
-// 	       });
-// 	  } catch (error) {
-// 	    console.log(error);
-// 	  }
-// 	}
-	
-// 	async function fetchAll() {
-// 	  for (let i = 0; i < revId.length; i++) {
-// 	    const item = revId[i];
-// 	    await fetchReplyList(item.value);
-// 	  }
-// 	}
-	
-// 	fetchAll();
-
    let plus = document.querySelectorAll(".plus")[0];
    let minus = document.querySelectorAll(".minus")[0];
    let productCount = document.querySelector("#productCount");
@@ -391,7 +348,6 @@
 	 			   if (result.retCode == "Success") {
 	 				   $('#zzim').removeClass('selected');
 	 				   $('#zzim').children(0).remove();
-// 	 				   let i = $("<i>").attr("class", "fa.fa-star text-danger")
 	 				   $("#zzim").append("<i class='fa fa-heart'></i>");
 	 			   	   alert("찜이 취소되었습니다.");
 	 			   } else {

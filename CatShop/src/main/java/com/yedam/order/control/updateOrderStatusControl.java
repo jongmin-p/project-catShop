@@ -26,6 +26,7 @@ public class updateOrderStatusControl implements Command {
 		System.out.println(ovo);
 		OrderService service = new OrderServiceImpl();
 		String json = "";
+		
 		if(service.modifyOrderStatus(ovo)>0) {
 			json = "{\"retCode\": \"Success\"}";
 			
@@ -35,5 +36,4 @@ public class updateOrderStatusControl implements Command {
 		
 		return json + ".json";
 	}
-
 }

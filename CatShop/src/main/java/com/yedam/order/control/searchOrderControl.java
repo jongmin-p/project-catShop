@@ -19,22 +19,24 @@ public class searchOrderControl implements Command {
 		String ordId = req.getParameter("ordId");
 		String memId = req.getParameter("memId");
 		String ordStatus = req.getParameter("ordStatus");
-//		String findPeriod = req.getParameter("findPeriod");
 		System.out.println(ordId);
 		System.out.println(memId);
 		System.out.println(ordStatus);
-//		System.out.println(findPeriod);
 		
 		OrderVO ovo = new OrderVO();
+		
 		if(ordId != "") {
 			ovo.setOrdId(Integer.parseInt(ordId));
 		}
+		
 		if(memId != "") {
 			ovo.setMemId(memId);	
 		}
+		
 		if(ordStatus != null) {
 			ovo.setOrdStatus(ordStatus);
 		}
+		
 		System.out.println(ovo);
 		OrderService service = new OrderServiceImpl();
 		System.out.println(service.searchOrder(ovo));
@@ -42,5 +44,4 @@ public class searchOrderControl implements Command {
 		
 		return "admin/orderManage.tiles";
 	}
-
 }

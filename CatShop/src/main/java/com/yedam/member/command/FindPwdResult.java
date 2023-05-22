@@ -12,8 +12,6 @@ public class FindPwdResult implements Command {
 
 	@Override
 	public String exec(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		return "member/findPwdResult.tiles";
 	}
-
 }

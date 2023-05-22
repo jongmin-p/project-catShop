@@ -18,7 +18,6 @@
 		sysdate)
 	</insert>
 
-	<!-- -->
 	<select id="getListAll" resultType="QaVO">
 		SELECT * FROM qa
 		ORDER BY qa_date DESC
@@ -40,7 +39,6 @@
 	  ]]>
 	</select>
 
-	<!-- 특정 상품 QA 만 검색 -->
 	<select id="searchSpecificQa" resultType="QaVO">
 		SELECT * FROM qa
 		WHERE pro_id = #{proId}
@@ -53,7 +51,6 @@
 		#{qaId}
 	</delete>
 
-
 	<update id="updateQa" parameterType="QaVO">
 		UPDATE qa
 		<set>
@@ -63,21 +60,5 @@
 		</set>
 		WHERE qa_id = #{qaId}
 	</update>
-
-
-	<!-- <update id="updateQa" parameterType="QaVO"> -->
-	<!-- UPDATE qa -->
-	<!-- SET -->
-	<!-- qa_id = #{qaId}, -->
-	<!-- mem_id = #{memId}, -->
-	<!-- pro_id = #{proId}, -->
-	<!-- qa_title = #{qaTitle}, -->
-	<!-- qa_content = #{qaContent}, -->
-	<!-- qa_date = #{qaDate}, -->
-	<!-- qa_reply = #{qaReply} -->
-	<!-- WHERE qa_id=#{qaId} -->
-	<!-- </update> -->
-
-
 
 </mapper>
