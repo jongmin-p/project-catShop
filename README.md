@@ -49,6 +49,7 @@
 ## 산출물
    ### ERD
    ![DB](https://github.com/jongmin-p/project-catShop/assets/119127039/a2ad95c8-65a9-453f-83d5-f559cd9765a3)
+   ![DB](https://github.com/jongmin-p/project-catShop/assets/119127039/109ac67d-7ab9-46da-9675-4925fbe43420)
      
    ### 시스템
    ![구성](https://github.com/jongmin-p/project-catShop/assets/119127039/aad8b600-efc0-448b-828e-e1d7a422e4a6)
