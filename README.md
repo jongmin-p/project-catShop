@@ -47,7 +47,7 @@
 
 
 ## 산출물
-   <span style="color: #0000FF">### ERD</span>
+   <span style="color:red">### ERD</span>
    ![DB](https://github.com/jongmin-p/project-catShop/assets/119127039/109ac67d-7ab9-46da-9675-4925fbe43420)
      
    ### 시스템
